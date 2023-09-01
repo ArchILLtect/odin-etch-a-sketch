@@ -1,0 +1,23 @@
+/* Created on 9/01/23 by ArchILLtect */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#mainContainer {
+    display: flex ;
+    border: 2px solid black;
+    grid: 0;
+    color: blue;
+    margin: 0;
+    padding: 0;
+}
+
+#mainContainer > div > div {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
