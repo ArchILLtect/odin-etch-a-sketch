@@ -1,27 +1,46 @@
-<!-- Created on 9/01/23 by ArchILLtect -->
+<!-- // Created on 9/01/23 by ArchILLtect for The Odin Project -->
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Etch-A-Sketch</title>
+        <title>Sketch-a-la-Click</title>
         <link rel="stylesheet" href="./etchASketch.css">
+        <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1 class="etchASketch">Etch-A-Sketch</h1>
-        <div class="gridWrapper" >
+        <header class="header">
+            <h1 class="title">Sketch-a-la-Click</h1>
+        </header>
+        <main class="main" >
             <div id="gridContainer" class="gridContainer">
             </div>
-        </div>
-        <div class="grid-options">
-            <button class="clear" type="button">Clear</button>
-            <div class="size-container">
-                <p>Pixel Size</p>
-                <input type="range" min="4" max="100" value="15" id="sizeRange" class="slider">
-                <p>Smallest to Largest</p>
+            <div class="gridConfig">
+                <div class="gridSliderContainer">
+                    <p>Grid Size Slider</p>
+                    <input type="range" min="4" max="100" value="15" id="gridSizeSlider" class="slider" />
+                    <p>Grid size: <span id="gridSizeValue">15 x 15</span></p>
+                </div>
+                <input id="colorPicker" type="color" value="#333333" />
+                <button id="colorBtn">Color mode</button>
+                <button id="rainbowBtn">Rainbow mode</button>
+                <button id="eraserBtn">Eraser</button>
+                <button id="toggleGridBtn">Toggle Grid</button>
+                <button class="clearScreen" id="clearScreen" type="button">Clear</button>
             </div>
-        </div>
+        </main>
+        <footer class="footer">
+            <p>
+              Copyright ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>
+              ArchILLtect
+            </p>
+            <a href="https://github.com/michalosman" target="_blank">
+              <i class="fab fa-github"></i></a>
+        </footer>
+        <script src="etchASketch.js"></script>
     </body>
-    <script src="etchASketch.js"></script>
 </html>

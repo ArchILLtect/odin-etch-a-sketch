@@ -1,30 +1,94 @@
-/* Created on 9/01/23 by ArchILLtect */
+/* // Created on 9/01/23 by ArchILLtect for The Odin Project */
 
 :root {
     --content-width: 500px;
+    --primary-dark: #333;
+    --primary-light: #ededed;
+    --secondary-light: #fefefe;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+    /* footer support */
+    position: relative;
+    min-height: 100%;
+}
+  
+body {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    /* footer support */
+    margin-bottom: 100px;
+}
+/* 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Make sure the body fills the viewport height */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
     background-color: beige;
+    margin-bottom: 100px;
+}
+ */
+h1 {
+    line-height: 1.2;
+  }
+
+.header {
+    padding: 30px 0;
 }
 
-a {
-    color: black;
-}
+.title {
+    text-align: center;
+    font-size: 80px;
+  }
 
-.etchASketch {
+/* .header {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 2.5em;
+    font-size: 1.5em;
     text-align: center;
     margin: 30px;
     color: black;
+} */
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 100px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
+.gridConfig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 200px;
+}
+
+.gridSliderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+ /*    border: 1px solid var(--primary-dark); */
+    border-radius: 5px;
+}
+/* 
 .gridWrapper {
     height: 75vw;
     width: 75vw;
@@ -33,22 +97,138 @@ a {
     margin: 30px auto;
     position: relative;
 }
+ */
 
 #gridContainer {
     display: grid;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: white;
+    width: var(--content-width);
+    height: var(--content-width);
+    background-color: var(--secondary-light);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.gridNode {
+    user-select: none;
+}
+
+/* 
 .gridContainer > * {
     height: 100%;
-    background-color: #ffffff;
+    background-color: #FfFfFf;
     transition: all 0.5s;
 }
+ */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.fa-github {
+    color: var(--primary-dark);
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
 
 /* Buttons & Button Wrapper */
+
+button,
+input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+
+button {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-dark);
+    border-radius: 5px;
+}
+
+button.active {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+}
+
+button,
+input[type='color'] {
+    transition: transform 0.1s ease-in-out;
+}
+
+button:hover,
+input[type='color']:hover {
+    transform: scale(1.05);
+}
+
+input[type='color']:active {
+    transition: transform 0.05s ease-in-out;
+    transform: scale(1);
+}
+
+input[type='color'] {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 80px;
+    border: none;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+    border: none;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.size-value {
+    margin-bottom: -20px;
+    font-size: 20px;
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    background-color: var(--primary-light);
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    border: 1px solid var(--primary-dark);
+    border-radius: 25px;
+    background: var(--secondary-light);
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 25px;
+    margin-top: -8px;
+    background: var(--primary-dark);
+}
+
+/* 
 button {
     font-family: Audiowide, cursive;
     padding: 5px;
@@ -89,19 +269,25 @@ button:focus, input:focus {
 input[type="color" i] {
     background-color: black;
 }
+ */
 
 /* Options Under Pixel Container */
 .grid-options {
-    width: calc(75vw + 40px);
+    width: 75vw;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 30px;
     align-items: center;
-    max-width: calc(var(--content-width) + 40px);
+    max-width: var(--content-width)
 }
 
 .grid-options > * {
     flex: 1 1 auto;
+}
+
+.gridOn {
+    border: 1px solid lightgray;
 }
 
 /* Pixel Size Slider */
@@ -124,9 +310,23 @@ input[type="color" i] {
     height: 15px;
     background: red;
     outline: none;
-    transform: rotate(180deg);
     transition: 0.2s;
     border-radius: 7px;
+}
+
+.sizeDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid red;
+    border-radius: 7px;
+    background-color: black;
+}
+
+.sizeDisplayTxt {
+    color: red;
 }
 
 /* Chrome *//*
@@ -148,9 +348,50 @@ slider::-moz-range-thumb {
     border-radius: 7px;
     cursor: pointer;
 }*/
-
+/* 
 @media only screen and (min-width: 1500px) {
     :root {
         --content-width: 600px;
     }
+} */
+
+@media (max-width: 1200px) {
+    .main {
+      justify-content: center;
+    }
+  }
+
+@media (max-width: 850px) {
+.main {
+    gap: 50px;
+}
+
+.settings {
+    width: 150px;
+    gap: 16px;
+}
+
+.size-value {
+    margin-bottom: -4px;
+}
+
+.grid {
+    width: 400px;
+    height: 400px;
+}
+}
+
+@media (max-width: 650px) {
+.title {
+    font-size: 50px;
+}
+
+.main {
+    flex-direction: column-reverse;
+}
+
+.grid {
+    width: 300px;
+    height: 300px;
+}
 }
