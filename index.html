@@ -4,12 +4,23 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="veiwport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Etch-A-Sketch</title>
         <link rel="stylesheet" href="./etchASketch.css">
     </head>
     <body>
-        <div id="mainContainer" class="mainContainer">
+        <h1 class="etchASketch">Etch-A-Sketch</h1>
+        <div class="gridWrapper" >
+            <div id="gridContainer" class="gridContainer">
+            </div>
+        </div>
+        <div class="grid-options">
+            <button class="clear" type="button">Clear</button>
+            <div class="size-container">
+                <p>Pixel Size</p>
+                <input type="range" min="4" max="100" value="15" id="sizeRange" class="slider">
+                <p>Smallest to Largest</p>
+            </div>
         </div>
     </body>
     <script src="etchASketch.js"></script>

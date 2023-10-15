@@ -1,23 +1,156 @@
 /* Created on 9/01/23 by ArchILLtect */
 
+:root {
+    --content-width: 500px;
+}
+
 body {
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Make sure the body fills the viewport height */
+    background-color: beige;
+}
+
+a {
+    color: black;
+}
+
+.etchASketch {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2.5em;
+    text-align: center;
+    margin: 30px;
+    color: black;
+}
+
+.gridWrapper {
+    height: 75vw;
+    width: 75vw;
+    max-height: var(--content-width);;
+    max-width: var(--content-width);
+    margin: 30px auto;
+    position: relative;
+}
+
+#gridContainer {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+}
+
+.gridContainer > * {
+    height: 100%;
+    background-color: #ffffff;
+    transition: all 0.5s;
+}
+
+/* Buttons & Button Wrapper */
+button {
+    font-family: Audiowide, cursive;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px;
+    color: red;
+    line-height: 27px;
+    background-color: black;
+    border: 1px solid red;
+}
+
+button:focus, input:focus {
+    outline: none ;
+    box-shadow: 0 1px 10px 0 rgba(240, 240, 240, 1);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: calc(75vw + 40px);
+    max-width: calc(var(--content-width) + 40px);
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.buttons > * {
+    flex: 1 1 auto;
+}
+
+#input-color {
+    border: none;
+    height: 25px;
+    width: 25px;
     padding: 0;
 }
 
-#mainContainer {
-    display: flex ;
-    border: 2px solid black;
-    grid: 0;
-    color: blue;
-    margin: 0;
-    padding: 0;
+input[type="color" i] {
+    background-color: black;
 }
 
-#mainContainer > div > div {
-    width: 15px;
+/* Options Under Pixel Container */
+.grid-options {
+    width: calc(75vw + 40px);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    align-items: center;
+    max-width: calc(var(--content-width) + 40px);
+}
+
+.grid-options > * {
+    flex: 1 1 auto;
+}
+
+/* Pixel Size Slider */
+.size-container {
+    width: 55vw;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+
+.size-container p {
+    color: black;
+    font-size: 18px;
+    font-family: Audiowide, cursive;
+    text-align: center;
+    margin: 7px 0;
+}
+
+.slider {
+    width: 100%;
     height: 15px;
-    border: 1px solid black;
-    margin: 0;
-    padding: 0;
+    background: red;
+    outline: none;
+    transform: rotate(180deg);
+    transition: 0.2s;
+    border-radius: 7px;
+}
+
+/* Chrome *//*
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}*/
+
+/* Firefox *//*
+slider::-moz-range-thumb {
+    width: 15px;
+    height: 30px;
+    background: white;
+    border-radius: 7px;
+    cursor: pointer;
+}*/
+
+@media only screen and (min-width: 1500px) {
+    :root {
+        --content-width: 600px;
+    }
 }

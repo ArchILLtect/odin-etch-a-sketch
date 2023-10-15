@@ -1,30 +1,31 @@
-// Created on 9/01/23 by ArchILLtect
+function createGrid(size = 4) {
+    let gridTotal = size * size;
+    let screen = document.getElementById("gridContainer");
 
-let rowNumber = 0;
-
-function createGrid( size=4 ) {
-    let gridRows = size ;
-    let gridTotal = size * size ;
-    let screen = document.getElementById("mainContainer") ;
-    
-    for (currentNode = 1; currentNode <= gridTotal; currentNode++) {
-        let addRow = currentNode % size ;
-        
-        const newNode = document.createElement("div") ;
-        newNode.classList.add('gridNode') ;
-        if (currentNode == 1) { currentRow = screen } ;
-        if (addRow == 1 ) {
-            const newRow = document.createElement("div") ;
-            screen.appendChild(newRow) ;
-            rowNumber++;
-            console.log(rowNumber)
-            newRow.id = "rowDiv" + rowNumber;
-            console.log("rowDiv" + rowNumber)
-            currentRow = document.getElementById("rowDiv" + rowNumber);
-            currentRow.appendChild(newNode) ;
-        } else {
-            currentRow.appendChild(newNode) ;}
+    if ( size > 150 ) {
+        size = 150;
     }
+    // Clear existing grid
+    screen.innerHTML = '';
+
+    for (let currentNode = 1; currentNode <= gridTotal; currentNode++) {
+        const newNode = document.createElement("div");
+        newNode.classList.add('gridNode');
+        screen.appendChild(newNode);
+    }
+
+    // Set the CSS grid properties for the mainContainer
+    screen.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    screen.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 }
 
-createGrid(40)
+createGrid(125);
+
+
+// Helper Functions
+
+
+
+
+// Clear Button
+
