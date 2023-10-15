@@ -1,13 +1,9 @@
 // Created on 9/01/23 by ArchILLtect for The Odin Project
-const DEF_COLOR = 'black';
-const DEF_MODE = 'color';
-
-let currentColor = DEF_COLOR;
-let currentMode = DEF_MODE;
+let currentColor = 'black';
+let currentMode = 'color';
 let mouseDown = false;
 
 let screen = document.getElementById("gridContainer");
-
 
 function createGrid(size = 20) {
     let gridTotal = size * size;
@@ -34,16 +30,13 @@ function createGrid(size = 20) {
 // Switch paint colors:
 function nodePaint(e) {
     if (e.type === 'mouseover' && !mouseDown) return;
-    switch (currentMode) { 
-        case 'rainbow':
-            const randomR = Math.floor(Math.random() * 256);
-            const randomG = Math.floor(Math.random() * 256);
-            const randomB = Math.floor(Math.random() * 256);
-            e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-            break;  
+    switch (currentMode) {
         case 'color':
             e.target.style.backgroundColor = currentColor;
             break;
+        case 'rainbow':
+            e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            break;  
         case 'eraser':
             e.target.style.backgroundColor = '#FfFfFf';
             break;
@@ -53,70 +46,39 @@ function nodePaint(e) {
     } 
 }
 
-function setCurrentMode(newMode) {
-    activateButton(newMode)
-    currentMode = newMode
+function setCurrentColor(newColor) {
+    currentColor = newColor
   }
 
-function changeColor(event) {
-    switch (event.target.dataset.color) { 
-        case 'rainbow':
-            color = 'rainbow';
-            break;  
-        case 'gray':
-            color = 'gray';
-            break;
-        case 'eraser':
-            color = 'eraser';
-            break;
-        default:
-            color = 'black';
-            break;
-    } 
+function setCurrentMode(newMode) {
+    selectMode(newMode)
+    currentMode = newMode
 }
 
 // focusButton:
 function selectMode(newMode) {
     switch (currentMode) {
-        case 'rainbow':
-            rainbowBtn.classList.remove('active')
-            break;  
         case 'color':
-            rainbowBtn.classList.remove('active')
+            colorModeBtn.classList.remove('active');
+            break;  
+        case 'rainbow':
+            rainbowModeBtn.classList.remove('active');
             break;
         case 'eraser':
-            rainbowBtn.classList.remove('active')
+            eraserModeBtn.classList.remove('active');
             break;
     }
 
     switch (newMode) {
-        case 'rainbow':
-            rainbowBtn.classList.remove('active')
-            break;  
         case 'color':
-            rainbowBtn.classList.remove('active')
+            colorModeBtn.classList.add('active');
+            break;  
+        case 'rainbow':
+            rainbowModeBtn.classList.add('active');
             break;
         case 'eraser':
-            rainbowBtn.classList.remove('active')
+            eraserModeBtn.classList.add('active');
             break;
-    }
-
-
-
-    if (currentMode === 'rainbow') {
-      rainbowBtn.classList.remove('active')
-    } else if (currentMode === 'color') {
-      colorBtn.classList.remove('active')
-    } else if (currentMode === 'eraser') {
-      eraserBtn.classList.remove('active')
-    }
-  
-    if (newMode === 'rainbow') {
-      rainbowBtn.classList.add('active')
-    } else if (newMode === 'color') {
-      colorBtn.classList.add('active')
-    } else if (newMode === 'eraser') {
-      eraserBtn.classList.add('active')
     }
 }
 
@@ -158,23 +120,38 @@ function clearScreen() {
 const gridSizeSlider = document.getElementById('gridSizeSlider');
 const gridSizeValue = document.getElementById('gridSizeValue');
 //const allButtons = document.querySelectorAll('button');
+const colorChoice = document.getElementById('colorChoice');
 const colorModeBtn = document.getElementById('colorModeBtn');
-const RainbowModeBtn = document.getElementById('rainbowModeBtn');
+const rainbowModeBtn = document.getElementById('rainbowModeBtn');
 const eraserModeBtn = document.getElementById('eraserModeBtn');
 const toggleGridBtn = document.getElementById('toggleGridBtn');
 const clearButton = document.getElementById('clearScreen');
+
+// Color choice
+colorChoice.addEventListener('change', function(e){
+    setCurrentColor(e.target.value);
+})
+
+// Color Mode
+colorModeBtn.addEventListener('click', function(){
+    setCurrentMode('color');
+});
+
+// Rainbow Mode
+rainbowModeBtn.addEventListener('click', function(){
+    setCurrentMode('rainbow');
+});
+
+// Eraser Mode
+eraserModeBtn.addEventListener('click', function(){
+    setCurrentMode('eraser');
+});
 
 // Toggle grid
 toggleGridBtn.addEventListener('click', function(){
     let gridNodes = document.querySelectorAll('.gridNode');
     gridNodes.forEach(node => node.classList.toggle('gridOn'));
 })
-// Color Mode
-
-
-// Rainbow Mode
-
-// Eraser Mode
 
 // Clear button
 clearButton.addEventListener('click', clearScreen);
