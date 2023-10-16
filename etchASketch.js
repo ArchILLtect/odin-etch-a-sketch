@@ -18,6 +18,7 @@ function createGrid(size = 20) {
         const gridNode = document.createElement("div");
         gridNode.classList.add('gridNode');
         gridNode.addEventListener('mouseover', nodePaint);
+        gridNode.addEventListener('mousedown', nodePaint);
         screen.appendChild(gridNode);
         gridNode.draggable = false;
     }
