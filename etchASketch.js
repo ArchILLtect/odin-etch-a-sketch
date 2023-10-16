@@ -36,7 +36,10 @@ function nodePaint(e) {
             break;
         case 'rainbow':
             e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            break;  
+            break;
+        case 'greyScale':
+            greyScalePaint(e);
+            break;
         case 'eraser':
             e.target.style.backgroundColor = '#FfFfFf';
             break;
@@ -44,15 +47,6 @@ function nodePaint(e) {
             color = 'black';
             break;
     } 
-}
-
-function setCurrentColor(newColor) {
-    currentColor = newColor
-  }
-
-function setCurrentMode(newMode) {
-    selectMode(newMode)
-    currentMode = newMode
 }
 
 // focusButton:
@@ -63,6 +57,9 @@ function selectMode(newMode) {
             break;  
         case 'rainbow':
             rainbowModeBtn.classList.remove('active');
+            break;
+        case 'greyScale':
+            greyScaleModeBtn.classList.remove('active');
             break;
         case 'eraser':
             eraserModeBtn.classList.remove('active');
@@ -76,14 +73,57 @@ function selectMode(newMode) {
         case 'rainbow':
             rainbowModeBtn.classList.add('active');
             break;
+        case 'greyScale':
+            greyScaleModeBtn.classList.add('active');
+            break;
         case 'eraser':
             eraserModeBtn.classList.add('active');
             break;
     }
 }
 
-  
+function greyScalePaint(node) {
+    let currentGrey = node.target.style.backgroundColor
+    if (currentGrey == 'rgba(128, 128, 128, 0.1)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.2)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.2)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.3)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.3)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.4)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.4)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.5)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.5)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.6)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.6)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.7)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.7)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.8)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.8)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.9)';
+    } else if (currentGrey == 'rgba(128, 128, 128, 0.9)') {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.9)';
+    } else {
+        node.target.style.backgroundColor = 'rgba(128, 128, 128, 0.1)';
+    }
+}
+
 // Helper Functions:
+function setCurrentColor(newColor) {
+    currentColor = newColor
+  }
+
+function setCurrentMode(newMode) {
+    selectMode(newMode)
+    currentMode = newMode
+}
+
+function buttonHover() {
+    this.style.border = '1px solid #ffffff';
+}
+
+function buttonRevert() {
+    this.style.border = '1px solid #FF0000';
+}
 
 // On Startup:
 function appPrep() {
@@ -102,15 +142,6 @@ window.addEventListener('load', function(){
     appPrep();
 });
 
-
-function buttonHover() {
-    this.style.border = '1px solid #ffffff';
-}
-
-function buttonRevert() {
-    this.style.border = '1px solid #FF0000';
-}
-
 // Clear Button
 function clearScreen() {
     let gridNodes = document.querySelectorAll('.gridNode');
@@ -124,6 +155,7 @@ const gridSizeValue = document.getElementById('gridSizeValue');
 const colorChoice = document.getElementById('colorChoice');
 const colorModeBtn = document.getElementById('colorModeBtn');
 const rainbowModeBtn = document.getElementById('rainbowModeBtn');
+const greyScaleModeBtn = document.getElementById('greyScaleModeBtn');
 const eraserModeBtn = document.getElementById('eraserModeBtn');
 const toggleGridBtn = document.getElementById('toggleGridBtn');
 const clearButton = document.getElementById('clearScreen');
@@ -141,6 +173,11 @@ colorModeBtn.addEventListener('click', function(){
 // Rainbow Mode
 rainbowModeBtn.addEventListener('click', function(){
     setCurrentMode('rainbow');
+});
+
+// GreyScale Mode
+greyScaleModeBtn.addEventListener('click', function(){
+    setCurrentMode('greyScale');
 });
 
 // Eraser Mode
