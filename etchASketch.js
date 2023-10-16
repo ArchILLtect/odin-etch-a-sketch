@@ -89,6 +89,7 @@ function selectMode(newMode) {
 function appPrep() {
     clearScreen();
     createGrid();
+    selectMode('color');
     document.addEventListener('mousedown', function(){
         mouseDown = true;
     });
@@ -151,6 +152,7 @@ eraserModeBtn.addEventListener('click', function(){
 toggleGridBtn.addEventListener('click', function(){
     let gridNodes = document.querySelectorAll('.gridNode');
     gridNodes.forEach(node => node.classList.toggle('gridOn'));
+    toggleGridBtn.classList.toggle('active');
 })
 
 // Clear button
@@ -166,5 +168,9 @@ gridSizeSlider.addEventListener('change', function(e){
     // Reload the grid
     createGrid(e.target.value)
 });
+
+const sliderTxt = document.querySelectorAll('.gridSliderContainer p');
+sliderTxt.forEach(para => para.classList.add('noUse') )
+
 
 
